@@ -69,6 +69,7 @@ class Menu extends Widget
     public $open = true;
     public $mode = self::MODE_HORIZONTAL;
     public $encodeLabels = false;
+    public $ulOptions = array();
 
     public function init()
     {
@@ -97,7 +98,7 @@ class Menu extends Widget
             $items[] = $this->renderItem($item);
         }
 
-        return Html::tag('ul', implode("\n", $items), $this->options);
+        return Html::tag('ul', implode("\n", $items), $this->ulOptions);
     }
 
     /**
