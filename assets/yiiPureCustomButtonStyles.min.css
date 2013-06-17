@@ -1,0 +1,4 @@
+/*
+ * This is based on: http://purecss.io/buttons/
+ */
+.yiipure-button-success,.yiipure-button-error,.yiipure-button-warning,.yiipure-button-secondary{color:#FFF;border-radius:4px;text-shadow:0 1px 1px rgba(0,0,0,0.2)}.yiipure-button-success{background:#1cb841}.yiipure-button-error{background:#ca3c3c}.yiipure-button-warning{background:#df7514}.yiipure-button-secondary{background:#42b8dd}
