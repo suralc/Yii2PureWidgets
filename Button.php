@@ -33,6 +33,14 @@ class Button extends Widget
         TYPE_ERROR = 'error',
         TYPE_WARNING = 'warning';
     /**
+     * Size
+     */
+    const SIZE_NONE = false,
+        SIZE_XLARGE = 'xlarge',
+        SIZE_LARGE = 'large',
+        SIZE_SMALL = 'small',
+        SIZE_XSMALL = 'xsmall';
+    /**
      * @var string the tag to use to render the button
      */
     public $tagName = 'button';
@@ -45,13 +53,17 @@ class Button extends Widget
      */
     public $encodeLabel = true;
     /**
-     * @var string whether to disable the button or to mark it active
+     * @var string whether to disable the button or to mark it active/disabled
      */
     public $state = self::STATE_NONE;
     /**
-     * @var bool|string
+     * @var bool|string Button type. One of primary, success, error or warning
      */
     public $type = self::TYPE_NONE;
+    /**
+     * @var bool|string Button size. One of none, xsmall, small, large, xlarge. Defaults to none, using the default sie of pure
+     */
+    public $size = self::SIZE_NONE;
     /**
      * @var string
      */
@@ -59,7 +71,7 @@ class Button extends Widget
     /**
      * @var string
      */
-    public $customButtonTypeBundleName = 'pure/custom-buttons';
+    public $customButtonTypeBundleName = 'pure/buttons/custom';
 
     /**
      * Initializes the widget.
@@ -73,6 +85,7 @@ class Button extends Widget
         if ($this->state) {
             Html::addCssClass($this->options, 'pure-button-' . $this->state);
         }
+        //todo refacftor
         $view = $this->getView();
         switch ($this->type) {
             case self::TYPE_PRIMARY:
@@ -89,7 +102,10 @@ class Button extends Widget
                 break;
         }
 
-        //  todo size
+        if ($this->size != self::SIZE_NONE) {
+            $view->registerAssetBundle($this->customButtonTypeBundleName);
+            Html::addCssClass($this->options, $this->customButtonStylePrefix . $this->size);
+        }
     }
 
     /**

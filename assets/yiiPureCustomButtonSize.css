@@ -1,0 +1,18 @@
+/*
+ * Based on example code from http://purecss.io/buttons/
+ */
+.yiipure-button-xsmall {
+    font-size: 70%;
+}
+
+.yiipure-button-small {
+    font-size: 85%;
+}
+
+.yiipure-button-large {
+    font-size: 110%;
+}
+
+.yiipure-button-xlarge {
+    font-size: 125%;
+}

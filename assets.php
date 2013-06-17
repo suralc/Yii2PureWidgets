@@ -13,10 +13,11 @@ return array(
             'pure.0.2.0-nr-min.css',
         ),
     ),
-    'pure/custom-buttons' => array(
+    'pure/buttons/custom' => array(
         'sourcePath' => __DIR__ . '/assets',
         'css' => array(
             'yiiPureCustomButtonStyles.css',
+            'yiiPureCustomButtonSize.css',
         ),
         'depends' => array('pure/base'),
     ),
