@@ -127,14 +127,14 @@ class Menu extends Widget
         $subul = '';
         if ($items !== null) {
             if (is_array($items)) {
-                $subul = Html::beginTag('ul');
+                $subul = Html::beginTag('ul', $this->ulOptions)."\n";
                 foreach ($items as $sub_item) {
-                    $subul .= $this->renderItem($sub_item);
+                    $subul .= $this->renderItem($sub_item)."\n";
                 }
-                $subul .= Html::endTag('ul');
+                $subul .= Html::endTag('ul')."\n";
             }
         }
 
-        return Html::tag('li', Html::a($label, $url, $linkOptions) . $subul, $options);
+        return Html::tag('li', Html::a($label, $url, $linkOptions). "\n" . $subul, $options);
     }
 }
