@@ -52,7 +52,7 @@ class Menu extends Widget
     const MODE_HORIZONTAL = 'horizontal';
     /**
      * todo: note abut why this is compatible
-     * @var array list of items in the nav widget. Each array element represents a single
+     * @var array list of items in the menu widget. Each array element represents a single
      * menu item with the following structure:
      *
      * - label: string, required, the nav item label.
@@ -60,8 +60,6 @@ class Menu extends Widget
      * - linkOptions: array, optional, the HTML attributes of the item's link.
      * - options: array, optional, the HTML attributes of the item container (LI).
      * - active: boolean, optional, whether the item should be on active state or not.
-     * - dropdown: array|string, optional, the configuration array for creating a [[Dropdown]] widget,
-     *   or a string representing the dropdown menu.
      */
     public $items = array();
     /**
