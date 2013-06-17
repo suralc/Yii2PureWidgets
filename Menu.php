@@ -7,6 +7,7 @@ namespace YiiPureWidgets;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\StringHelper;
 
 /**
  * Nav renders a nav HTML component.
@@ -94,11 +95,27 @@ class Menu extends Widget
     public function renderItems()
     {
         $items = array();
+        $content = '';
+        if (isset($this->items[0]) && isset($this->items[0]['label']) && stripos(
+                $this->items[0]['label'],
+                'HEADING:'
+            ) === 0
+        ) {
+            $this->items[0]['label'] = StringHelper::substr($this->items[0]['label'], 8, null);
+            $opt = array();
+            Html::addCssClass($opt, 'pure-menu-heading');
+            $content .= Html::a(
+                $this->items[0]['label'],
+                isset($this->items[0]['url']) ? $this->items[0]['url'] : '#',
+                $opt
+            );
+            unset($this->items[0]);
+        }
         foreach ($this->items as $item) {
             $items[] = $this->renderItem($item);
         }
 
-        return Html::tag('ul', implode("\n", $items), $this->ulOptions);
+        return $content . Html::tag('ul', implode("\n", $items), $this->ulOptions);
     }
 
     /**
@@ -127,14 +144,14 @@ class Menu extends Widget
         $subul = '';
         if ($items !== null) {
             if (is_array($items)) {
-                $subul = Html::beginTag('ul', $this->ulOptions)."\n";
+                $subul = Html::beginTag('ul', $this->ulOptions) . "\n";
                 foreach ($items as $sub_item) {
-                    $subul .= $this->renderItem($sub_item)."\n";
+                    $subul .= $this->renderItem($sub_item) . "\n";
                 }
-                $subul .= Html::endTag('ul')."\n";
+                $subul .= Html::endTag('ul') . "\n";
             }
         }
 
-        return Html::tag('li', Html::a($label, $url, $linkOptions). "\n" . $subul, $options);
+        return Html::tag('li', Html::a($label, $url, $linkOptions) . "\n" . $subul, $options);
     }
 }
