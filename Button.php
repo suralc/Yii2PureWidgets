@@ -85,7 +85,7 @@ class Button extends Widget
         if ($this->state) {
             Html::addCssClass($this->options, 'pure-button-' . $this->state);
         }
-        //todo refacftor
+        //todo refactor
         $view = $this->getView();
         switch ($this->type) {
             case self::TYPE_PRIMARY:
