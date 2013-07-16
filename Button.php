@@ -71,7 +71,7 @@ class Button extends Widget
     /**
      * @var string
      */
-    public $customButtonTypeBundleName = 'pure/buttons/custom';
+    public $customButtonTypeBundleName = 'YiiPureWidgets\PureWidgetCustomButtonAssetBundle';
 
     /**
      * Initializes the widget.

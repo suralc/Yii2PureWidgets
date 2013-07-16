@@ -33,16 +33,9 @@ class Widget extends \yii\base\Widget
     public function init()
     {
         parent::init();
-        if (!isset($this->getView()->getAssetManager()->bundles['pure/base'])) {
-            $this->getView()->getAssetManager()->bundles = array_merge(
-                $this->getView()->getAssetManager()->bundles,
-                include __DIR__ . '/assets.php'
-            );
-        }
+		PureWidgetBaseAssetBundle::register($this->getView());
         if (!isset($this->options['id'])) {
             $this->options['id'] = $this->getId();
         }
-        $view = $this->getView();
-        $view->registerAssetBundle(static::$responsive ? 'pure/base' : 'pure/base-unresponsive');
     }
 }
