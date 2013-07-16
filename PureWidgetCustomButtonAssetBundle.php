@@ -10,13 +10,12 @@ class PureWidgetCustomButtonAssetBundle extends AssetBundle
             'yiiPureCustomButtonSize.css',
 	);
 	
-	public $depends = array(
-		PureWidgetBaseAssetBundle::className(),
-	);
+	public $depends = array();
 	
 	public function __construct($options = array())
 	{
 		$options['sourcePath'] = __DIR__ . '/assets';
+		$options = array_merge_recursive($options, array('depends' => array(PureWidgetBaseAssetBundle::className())));
 		parent::__construct($options);
 	}
 }
