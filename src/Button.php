@@ -3,7 +3,7 @@
  * todo header
  */
 
-namespace YiiPureWidgets;
+namespace suralc\yii2\PureWidgets;
 
 use yii\helpers\Html;
 
@@ -71,7 +71,7 @@ class Button extends Widget
     /**
      * @var string
      */
-    public $customButtonTypeBundleName = 'YiiPureWidgets\PureWidgetCustomButtonAssetBundle';
+    public $customButtonTypeBundleName = '\\suralc\\yii2\\PureWidgets\\PureWidgetCustomButtonAssetBundle';
 
     /**
      * Initializes the widget.
@@ -85,7 +85,7 @@ class Button extends Widget
         if ($this->state) {
             Html::addCssClass($this->options, 'pure-button-' . $this->state);
         }
-        //todo refacftor
+
         $view = $this->getView();
         switch ($this->type) {
             case self::TYPE_PRIMARY:
@@ -100,6 +100,10 @@ class Button extends Widget
             case self::TYPE_NONE:
             default:
                 break;
+        }
+
+        if ($this->state !== self::STATE_NONE) {
+            Html::addCssClass($this->options, 'pure-button-' . $this->state);
         }
 
         if ($this->size != self::SIZE_NONE) {

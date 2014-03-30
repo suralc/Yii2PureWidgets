@@ -3,10 +3,9 @@
  * todo header
  */
 
-namespace YiiPureWidgets;
+namespace suralc\yii2\PureWidgets;
 
 use Yii;
-use yii\base\View;
 
 /**
  * \YiiPureWidgets\Widget is the base class for all pure widgets.
@@ -33,7 +32,7 @@ class Widget extends \yii\base\Widget
     public function init()
     {
         parent::init();
-		PureWidgetBaseAssetBundle::register($this->getView());
+        PureWidgetBaseAssetBundle::register($this->getView());
         if (!isset($this->options['id'])) {
             $this->options['id'] = $this->getId();
         }
