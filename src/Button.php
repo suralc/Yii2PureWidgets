@@ -102,10 +102,6 @@ class Button extends Widget
                 break;
         }
 
-        if ($this->state !== self::STATE_NONE) {
-            Html::addCssClass($this->options, 'pure-button-' . $this->state);
-        }
-
         if ($this->size != self::SIZE_NONE) {
             $view->registerAssetBundle($this->customButtonTypeBundleName);
             Html::addCssClass($this->options, $this->customButtonStylePrefix . $this->size);
